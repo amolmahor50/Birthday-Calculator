@@ -1,56 +1,55 @@
 
 
-$(document).ready(function() {
-    $('#submit').click(function() {
+$(document).ready(function () {
+    $('#submit').click(function () {
 
         var startDate = $('#start-date').val();
         var endDate = $('#end-date').val();
 
-        // checked i both are date selected 
-        if(!startDate || !endDate) {
-            alert("Please Checked and both date");
-            return;
-        }   
+        if (startDate && endDate) {
+            var start = new Date(startDate);
+            var end = new Date(endDate);
 
-        // Check if the end date is earlier than the start date
-        var start = new Date(startDate);
-        var end = new Date(endDate);
+            if (start > end) {
+                var tempDate = start;
+                var start = end;
+                var end = tempDate;
+            }
 
-        // Check if the end date is earlier than the start date
-        if(end < start) {
-            alert("End date cannot be earlier than start date.");
-            return;
+            var years = end.getFullYear() - start.getFullYear();
+            var months = end.getMonth() - start.getMonth();
+            var days = end.getDate() - start.getDate();
+
+            console.log(years, months, days);
+
+            if (days < 0) {
+                months--;
+                days += new Date(end.getFullYear(), end.getMonth(), 0).getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            var hour = days * 24;
+            var min = days * 24 * 60;
+            var sec = days * 24 * 60 * 60;
+
+            // Display the result in the respective span elements
+            $("#years").text(years);
+            $("#months").text(months);
+            $("#days").text(days);
+
+            $("#hour").text(hour);
+            $("#min").text(min);
+            $("#sec").text(sec);
+
         }
-
-        //calculate the date different to milisecond
-        var differentTime = end - start;
-
-        // convert the time 
-        var milisecondInDay = 1000* 60 * 60 * 24;
-        var milisecondInMonth = milisecondInDay * 30;
-        var millisecondsInYear = milisecondInDay * 365.25;
-
-        var totalDays = Math.floor(differentTime / milisecondInDay);
-        var years = Math.floor(differentTime / millisecondsInYear);
-        var months = Math.floor(differentTime / milisecondInMonth) - years * 12;
-        var days = totalDays - (years * 365) - (months * 30);
-        var hour = totalDays * 24;
-        var min = totalDays * 24 * 60;
-        var sec = totalDays * 24 * 60 * 60;
-
-
-        // Display the result in the respective span elements
-        $("#years").text(years);
-        $("#months").text(months);
-        $("#days").text(days);
-
-        $("#totalDay").text(totalDays);
-        $("#hour").text(hour);
-        $("#min").text(min);
-        $("#sec").text(sec);
 
     })
 })
+
 
 
 
