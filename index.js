@@ -38,7 +38,6 @@ $(document).ready(function() {
         var min = totalDays * 24 * 60;
         var sec = totalDays * 24 * 60 * 60;
 
-        console.log(totalDays)
 
         // Display the result in the respective span elements
         $("#years").text(years);
