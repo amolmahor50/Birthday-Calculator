@@ -24,23 +24,31 @@
         <div class="inp-wrapper">
             <div class="date-wrapper">
                 <label for="date-1">Start Date</label>
-                <input type="date" id="date-1">
+                <input type="date" id="start-date">
             </div>
             <div class="date-wrapper">
                 <label for="date-2">End Date</label>
-                <input type="date" id="date-2">
+                <input type="date" id="end-date">
             </div>
         </div>
         <button id="submit">Calculate</button>
+      <div class="list-items">
         <ul>
-            <li>Days<span>00</span></li>
-            <li>Hours<span>00</span></li>
-            <li>Minute<span>00</span></li>
-            <li>Seconds<span>00</span></li>
+            <li>Year- <span id="years">00</span></li>
+            <li>Month- <span id="months">00</span></li>
+            <li>Days- <span id="days">00</span></li>
         </ul>
+        <ul>
+            <li>Total Days- <span id="totalDay">00</span></li>
+            <li>Hours- <span id="hour">00</span></li>
+            <li>Minute- <span id="min">00</span></li>
+            <li>Seconds- <span id="sec">00</span></li>
+        </ul>
+      </div>
     </div>
 
     <!------Js file link-------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="index.js"></script>
 </body>
 
